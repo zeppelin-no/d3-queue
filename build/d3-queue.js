@@ -1,4 +1,11 @@
-import { slice } from './array';
+// https://d3js.org/d3-queue/ Version 3.0.7. Copyright 2018 Mike Bostock.
+(function (global, factory) {
+	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
+	typeof define === 'function' && define.amd ? define(['exports'], factory) :
+	(factory((global.d3 = global.d3 || {})));
+}(this, (function (exports) { 'use strict';
+
+var slice = [].slice;
 
 var noabort = {};
 
@@ -119,9 +126,15 @@ function maybeNotify(q) {
   }
 }
 
-export default function queue(concurrency) {
+function queue(concurrency) {
   if (concurrency == null) concurrency = Infinity;
   else if (!((concurrency = +concurrency) >= 1))
     throw new Error('invalid concurrency');
   return new Queue(concurrency);
 }
+
+exports.queue = queue;
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
+})));
