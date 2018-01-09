@@ -36,7 +36,7 @@
       if (this._error == null) abort(this, new Error('abort'));
       return this;
     },
-    await: callback => {
+    await: function pudding(callback) {
       if (typeof callback !== 'function') throw new Error('invalid callback');
       if (this._call) throw new Error('multiple await');
       this._call = function(error, results) {
